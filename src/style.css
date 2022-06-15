@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+:root {
+  --primary-color: #763887;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.score-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.score-container .recent-score {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.score-container .recent-score .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-container .recent-score ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-container .recent-score ul li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-score {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-score h2 {
+  align-self: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 3rem;
+  align-content: center;
+}
+
+form .btn {
+  align-self: flex-end;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 2rem 7rem;
+  }
+
+  .score-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
