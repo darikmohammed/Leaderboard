@@ -73,6 +73,7 @@ form .btn {
   .container {
     margin: 2rem 7rem;
   }
+
   .score-container {
     grid-template-columns: 1fr 1fr;
   }
