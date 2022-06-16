@@ -28,6 +28,7 @@ ul {
   border-radius: 10px;
   display: none;
 }
+
 .score-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -84,10 +85,6 @@ form {
   align-content: center;
 }
 
-form .btn {
-  align-self: flex-end;
-}
-
 .rank,
 .score {
   color: #4b3187;
@@ -101,12 +98,18 @@ form .btn {
   border: none;
   transition: 0.7s;
 }
+
+form .btn {
+  align-self: flex-end;
+}
+
 .btn:hover {
   background-color: #f1eded;
   color: #763887;
   border: solid 1px #000;
   transition: 0.7s;
 }
+
 @media (min-width: 768px) {
   .container {
     margin: 2rem 7rem;

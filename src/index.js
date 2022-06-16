@@ -3,8 +3,7 @@ import Game from './modules/Game.js';
 import sort from './modules/Sort.js';
 
 let gameId = '';
-const baseUrl =
-  'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
+const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
 const form = document.querySelector('#score-form');
 const refreshBtn = document.querySelector('#form-refresh');
 const scoresData = document.querySelector('.recent-score ul');
@@ -42,7 +41,7 @@ form.addEventListener('submit', async (e) => {
   const score = document.querySelector('#form-score');
   const response = await game.addNewGame(
     { user: name.value, score: score.value },
-    gameId
+    gameId,
   );
   name.value = '';
   score.value = '';
