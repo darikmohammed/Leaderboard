@@ -3,7 +3,8 @@ import Game from './modules/Game.js';
 import sort from './modules/Sort.js';
 
 let gameId = '';
-const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
+const baseUrl =
+  'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
 const form = document.querySelector('#score-form');
 const refreshBtn = document.querySelector('#form-refresh');
 const scoresData = document.querySelector('.recent-score ul');
@@ -25,19 +26,11 @@ const refreshPage = async () => {
   let leaderboardResults = await game.getGames(gameId);
   leaderboardResults = sort(leaderboardResults);
   leaderboardResults.forEach((result, index) => {
-    if (index === 0) {
-      scoresData.innerHTML += `<li class="first">
-        <p class="rank ">${index + 1}</p>
-        <p class="name">${result.user}</p>
-        <p class="score">${result.score}</p>
-    </li>`;
-    } else {
-      scoresData.innerHTML += `<li>
+    scoresData.innerHTML += `<li>
         <p class="rank">${index + 1}</p>
         <p class="name">${result.user}</p>
         <p class="score">${result.score}</p>
     </li>`;
-    }
   });
 };
 
@@ -49,7 +42,7 @@ form.addEventListener('submit', async (e) => {
   const score = document.querySelector('#form-score');
   const response = await game.addNewGame(
     { user: name.value, score: score.value },
-    gameId,
+    gameId
   );
   name.value = '';
   score.value = '';
