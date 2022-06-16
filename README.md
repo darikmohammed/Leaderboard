@@ -13,7 +13,7 @@
 
 ## Live Demo (if available)
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://darikmohammed.github.io/Leaderboard/)
 
 ## Getting Started
 
@@ -39,10 +39,11 @@ git clone git@github.com:darikmohammed/Leaderboard.git
 
 - ```sh
     npm install
-    ```
+  ```
 - ```sh
     npm start
-    ```
+  ```
+
 #### Linters tests
 
 - Lighthouse

@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <title>Leaderboard</title>
 <script defer src="main.js"></script></head>
+
 <body>
-    <h1>Hello webpack!</h1>
+    <div class="container">
+        <h1>Leaderboard</h1>
+        <p class="add-result"></p>
+        <div class="score-container">
+            <div class="recent-score">
+                <div class="header">
+                    <h2>Recent Scores</h2>
+                    <button class="refresh-btn btn" id="form-refresh"> Refresh</button>
+                </div>
+                <ul>
+                    <li class="first">
+                        <p class="rank first-rank">1</p>
+                        <p class="name">First Scorer</p>
+                        <p class="score">100</p>
+                    </li>
+                    <li>
+                        <p class="rank">2</p>
+                        <p class="name">Name</p>
+                        <p class="score">20</p>
+                    </li>
+                    <li>
+                        <p class="name">Name</p>
+                        <p class="score">20</p>
+                    </li>
+                    <li>
+                        <p class="name">Name</p>
+                        <p class="score">20</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="add-score">
+                <h2>Add your score</h2>
+                <form action="#" id="score-form" class="form">
+                    <input type="text" name="name" id="form-name" placeholder="Name" required>
+                    <input type="number" name="name" id="form-score" placeholder="Score" required>
+                    <button type="submit" class="add-score-btn btn" id="form-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
