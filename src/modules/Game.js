@@ -5,7 +5,7 @@ class Game {
   }
 
   createGame = async () => {
-    await fetch(`${this.baseUrl}/games`, {
+    const response = await fetch(`${this.baseUrl}/games`, {
       method: 'POST',
       body: JSON.stringify({
         name: this.gameName,
@@ -13,9 +13,11 @@ class Game {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    });
+    const data = await response.json();
+    return data.result;
+    //   .then((response) => response.json())
+    //   .then((json) => console.log(json));
   };
 
   addNewGame = async (newData, gameId) => {

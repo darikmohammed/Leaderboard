@@ -2,7 +2,7 @@ import './style.css';
 import Game from './modules/Game';
 import sort from './modules/Sort';
 
-const gameId = 'O6B5TxbYyAOJubOKEvtu';
+let gameId = '';
 const baseUrl =
   'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
 const form = document.querySelector('#score-form');
@@ -10,6 +10,17 @@ const refreshBtn = document.querySelector('#form-refresh');
 const scoresData = document.querySelector('.recent-score ul');
 const game = new Game(baseUrl);
 
+const checkLocalStorage = async () => {
+  const testGameId = localStorage.getItem('gameId');
+  if (!testGameId) {
+    const response = await game.createGame();
+    gameId = response.slice(14, 34);
+    localStorage.setItem('gameId', gameId);
+  } else {
+    gameId = testGameId;
+  }
+};
+checkLocalStorage();
 const refreshPage = async () => {
   scoresData.innerHTML = '';
   let leaderboardResults = await game.getGames(gameId);
@@ -48,6 +59,7 @@ form.addEventListener('submit', async (e) => {
   result.textContent = response;
   setTimeout(() => {
     result.style.display = 'none';
+    refreshPage();
   }, 3000);
 });
 
