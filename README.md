@@ -35,6 +35,14 @@ git clone git@github.com:darikmohammed/Leaderboard.git
 
 - Or download the zip file from the github directory.
 
+#### Run the project locally
+
+- ```sh
+    npm install
+    ```
+- ```sh
+    npm start
+    ```
 #### Linters tests
 
 - Lighthouse
