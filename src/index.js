@@ -1,5 +1,6 @@
 import './style.css';
 import Game from './modules/Game';
+import sort from './modules/Sort';
 
 const gameId = 'O6B5TxbYyAOJubOKEvtu';
 const baseUrl =
@@ -11,7 +12,8 @@ const game = new Game(baseUrl);
 
 const refreshPage = async () => {
   scoresData.innerHTML = '';
-  const leaderboardResults = await game.getGames(gameId);
+  let leaderboardResults = await game.getGames(gameId);
+  leaderboardResults = sort(leaderboardResults);
   leaderboardResults.forEach((result, index) => {
     if (index === 0) {
       scoresData.innerHTML += `<li class="first">
