@@ -25,19 +25,11 @@ const refreshPage = async () => {
   let leaderboardResults = await game.getGames(gameId);
   leaderboardResults = sort(leaderboardResults);
   leaderboardResults.forEach((result, index) => {
-    if (index === 0) {
-      scoresData.innerHTML += `<li class="first">
-        <p class="rank ">${index + 1}</p>
-        <p class="name">${result.user}</p>
-        <p class="score">${result.score}</p>
-    </li>`;
-    } else {
-      scoresData.innerHTML += `<li>
+    scoresData.innerHTML += `<li>
         <p class="rank">${index + 1}</p>
         <p class="name">${result.user}</p>
         <p class="score">${result.score}</p>
     </li>`;
-    }
   });
 };
 

@@ -21,6 +21,14 @@ ul {
   gap: 2rem;
 }
 
+.add-result {
+  background-color: #8bc7a4;
+  color: #000;
+  padding: 1rem;
+  border-radius: 10px;
+  display: none;
+}
+
 .score-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -39,13 +47,25 @@ ul {
 }
 
 .score-container .recent-score ul {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .score-container .recent-score ul li {
   display: flex;
   justify-content: space-between;
+  background-color: #f1eded;
+  color: #000;
+  border-radius: 45px;
+  padding: 1.25rem;
+}
+
+input {
+  padding: 1rem;
+  border-radius: 25px;
+  border: solid rgb(61, 59, 59);
 }
 
 .add-score {
@@ -65,8 +85,29 @@ form {
   align-content: center;
 }
 
+.rank,
+.score {
+  color: #4b3187;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  background-color: #763887;
+  color: #fff;
+  border: none;
+  transition: 0.7s;
+}
+
 form .btn {
   align-self: flex-end;
+}
+
+.btn:hover {
+  background-color: #f1eded;
+  color: #763887;
+  border: solid 1px #000;
+  transition: 0.7s;
 }
 
 @media (min-width: 768px) {
