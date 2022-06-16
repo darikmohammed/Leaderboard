@@ -19,22 +19,26 @@ class Game {
   };
 
   addNewGame = async (newData, gameId) => {
-    await fetch(`${this.baseUrl}/games/${gameId}/scores/`, {
+    const response = await fetch(`${this.baseUrl}/games/${gameId}/scores/`, {
       method: 'POST',
       body: JSON.stringify(newData),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
-    //return {result: 'Leaderboard score created correctly.'}
+    });
+    const data = await response.json();
+    return data.result;
+    //   .then((response) => response.json())
+    //   .then((json) => console.log(json));
+    // return {result: 'Leaderboard score created correctly.'}
   };
 
   getGames = async (gameId) => {
-    await fetch(`${this.baseUrl}/games/${gameId}/scores/`)
-      .then((response) => response.json())
-      .then((json) => console.log(json.result));
+    const response = await fetch(`${this.baseUrl}/games/${gameId}/scores/`);
+    const data = await response.json();
+    return data.result;
+    //   .then((response) => response.json())
+    //   .then((json) => json.result);
   };
 }
 

@@ -2,37 +2,56 @@ import './style.css';
 import Game from './modules/Game';
 
 const gameId = 'O6B5TxbYyAOJubOKEvtu';
-const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
+const baseUrl =
+  'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
 const form = document.querySelector('#score-form');
 const refreshBtn = document.querySelector('#form-refresh');
 const scoresData = document.querySelector('.recent-score ul');
 const game = new Game(baseUrl);
 
-// game.addNewGame({ user: 'John Doe', score: 42 }, gameId);
-// game.getGames(gameId);
-const refreshPage = (leaderboardResults) => {
-  // sort the leaderboardResults
+const refreshPage = async () => {
   scoresData.innerHTML = '';
-  console.log(leaderboardResults);
-  leaderboardResults.forEach((result) => {
-    console.log(result);
+  const leaderboardResults = await game.getGames(gameId);
+  leaderboardResults.forEach((result, index) => {
+    if (index === 0) {
+      scoresData.innerHTML += `<li class="first">
+        <p class="rank ">${index + 1}</p>
+        <p class="name">${result.user}</p>
+        <p class="score">${result.score}</p>
+    </li>`;
+    } else {
+      scoresData.innerHTML += `<li>
+        <p class="rank">${index + 1}</p>
+        <p class="name">${result.user}</p>
+        <p class="score">${result.score}</p>
+    </li>`;
+    }
   });
 };
+
 // Event Listener
-form.addEventListener('click', (e) => {
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const name = document.querySelector('#form-name');
   const score = document.querySelector('#form-score');
-  game.addNewGame({ user: name.value, score: score.value });
+  const response = await game.addNewGame(
+    { user: name.value, score: score.value },
+    gameId
+  );
   name.value = '';
   score.value = '';
-  // refresh the list
+  const result = document.querySelector('.add-result');
+  result.style.display = 'block';
+  result.textContent = response;
+  setTimeout(() => {
+    result.style.display = 'none';
+  }, 3000);
 });
 
-refreshBtn.addEventListener('click', () => {
-  const boardResult = game.getGames(gameId);
+refreshBtn.addEventListener('click', async () => {
+  const boardResult = await game.getGames(gameId);
   refreshPage(boardResult);
 });
 
-const initleaderBoardReults = game.getGames(gameId);
-refreshPage(initleaderBoardReults);
+refreshPage();
